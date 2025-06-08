@@ -1,0 +1,58 @@
+<!-- # Dylan Kenneth Eliot 
+
+This example works within the web. That includes w3schools, blogger.com, and as well as offline.
+
+It's purpose isto partially demo loading and running from github the c++ keywords via pyodide.
+-->
+
+<br><br>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.25.1/full/pyodide.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/brython@3.11.3/brython.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/brython@3.11.3/brython_stdlib.js"></script>
+</head>
+<pre id="output">runtime loading, please wait...</pre>
+<body>
+<script>
+  async function boot() {
+    window.pyodide = await loadPyodide({
+      indexURL: "https://cdn.jsdelivr.net/pyodide/v0.25.1/full/"
+    });
+    await window.pyodide.loadPackage(['requests']);
+    brython(); // boot Brython after Pyodide init
+  }
+
+  boot();
+</script>
+
+<script type="text/python">
+from browser import ajax, document, window
+
+window.pyodide.runPython('''
+wget=__import__("requests").get
+
+
+exec(wget("https://raw.githubusercontent.com/ForkInABlender/get_importer/refs/heads/main/github_import.py").text)
+
+with Git_import2(username="ForkInABlender", repo="py_integrations", branch="main", path_to_module="c++/keywords/namespace.py") as namespace:
+  pass
+
+x_namespace=namespace.Namespace()
+
+
+@x_namespace
+def performAction(choice):
+  return f"your choice was: {choice}"
+
+with x_namespace: # using namespace x_namespace
+   print(performAction(3))
+# returns none when used out of scope.... as you didn't use the right namespace ....
+print(performAction(33))
+
+''')
+
+
+</script>
+</body>
