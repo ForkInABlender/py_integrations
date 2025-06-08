@@ -107,4 +107,4 @@ The same way they do in c++, except c++ does not have a `help` function to see t
 # Will these work with Pyodide.js?
 
 Yes. Given recent testing with expectations of failure, these parts will also work within the web. Given cffi, cython, and ctypes, as long as you keep your code close to a 1:1 
- match in functional definition to the initial code, you should see similar if not faster performance.
+ match in functional definition to the initial code, you should see similar if not faster performance. If used with pyQT5, you practically can get a full runtime without compiling any code. Just rendering templates.
