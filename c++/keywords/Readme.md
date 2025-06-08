@@ -102,4 +102,9 @@ More information on types, go to [my blog](https://brython-fly.blogspot.com/2024
 
 # How do c++ comments work in python?
 
-The same way they do in c++, except c++ does not have a `help` function to see the compiled out comments; there are some comments that get filtered out, like the ones around returns, item assignments of value, etcetera. While not perfect, it gets 99% and the remaining .9% to 1% of the work is miniscule or redundant. Do note, though, that all defined comments above, inside, around a function, parameters included, are of that function's `help` comment-tree. 
+The same way they do in c++, except c++ does not have a `help` function to see the compiled out comments; there are some comments that get filtered out, like the ones around returns, item assignments of value, etcetera. While not perfect, it gets 99% and the remaining .9% to 1% of the work is miniscule or redundant. Do note, though, that all defined comments above, inside, around a function, parameters included, are of that function's `help` comment-tree.
+
+# Will these work with Pyodide.js?
+
+Yes. Given recent testing with expectations of failure, these parts will also work within the web. Given cffi, cython, and ctypes, as long as you keep your code close to a 1:1 
+ match in functional definition to the initial code, you should see similar if not faster performance.
